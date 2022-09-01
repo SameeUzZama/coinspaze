@@ -9,6 +9,6 @@ Dialog box contain following fields
         
 Submit Button will not be enabled until all mandatory fields are filled which is email and ammount.
 
-On Success - Displaying Success in Alert.
+On Success - Data will add in db.json file where we can use API also and Displaying Success in Alert.
 
 [formValidation.webm](https://user-images.githubusercontent.com/94825943/187995107-e0381d5b-a115-42bc-badd-f53d1ce4bf2b.webm)
