@@ -30,10 +30,13 @@ const Data = ({ func }) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  // function of post request for sending data in json file or in a api
+  // function of post request for sending data in json file or in a api with the axios library
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:3003/users", user);
+    await axios
+      .post("http://localhost:3003/users", user)
+      .then((response) => alert("Success"))
+      .catch((error) => alert(error));
   };
 
   // function for submitting Data
@@ -47,7 +50,7 @@ const Data = ({ func }) => {
       setTimeout(() => {
         func();
       }, 2000);
-      window.alert("Success");
+      // window.alert("Success");
     } else {
       if (!reg.test(email)) {
         setEm("PLease Enter Valid Email");
