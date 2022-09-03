@@ -11,7 +11,7 @@ Submit Button will not be enabled until all mandatory fields are filled which is
 
 On Success - Data will add in db.json file where we can use API also and Displaying Success in Alert and also show error if error api or json is not working.
 
-after cloning the app first you have to insatll the node module, so run this command "npm install".
+after cloning the app first you have to go to payment folder and then insatll the node module, to insall node module use the command "npm install".
 to run the application use "npm run start:dev" for both react app and json-Server.
 to see the error use only "npm start" it show the error because json-server is not running.
 
