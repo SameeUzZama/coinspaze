@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
+import swal from "sweetalert";
 import axios from "axios";
+import { useState } from "react";
 import "./Style/Data.css";
 
 //Reciving "func" as a props from parent component
@@ -31,12 +32,42 @@ const Data = ({ func }) => {
   };
 
   // function of post request for sending data in json file or in a api with the axios library
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    await axios
-      .post("http://localhost:3003/users", user)
-      .then((response) => alert("Success"))
-      .catch((error) => alert(error));
+    axios.post("http://localhost:3003/users", user).then((res) => {
+      console.log(res);
+      if (res.status === 200 || res.status === 201) {
+        swal({
+          title: "Success",
+          text: "The Data is Succeessfully send to Json file",
+          icon: "success",
+        });
+        setTimeout(() => {
+          func();
+        }, 3000);
+      } else if (res.status === 400) {
+        swal({
+          title: "Bad Request",
+          icon: "warning",
+        });
+      } else if (res.status === 401) {
+        swal({
+          title: "Unauthorized",
+          icon: "warning",
+        });
+      } else if (res.status === 500) {
+        swal({
+          title: "Server Error",
+          icon: "warning",
+        });
+      } else {
+        console.log("gggg");
+        swal({
+          title: "Something went wrong",
+          icon: "warning",
+        });
+      }
+    });
   };
 
   // function for submitting Data
@@ -47,10 +78,6 @@ const Data = ({ func }) => {
 
     if (reg.test(email) && amount > 0) {
       onSubmit();
-      setTimeout(() => {
-        func();
-      }, 2000);
-      // window.alert("Success");
     } else {
       if (!reg.test(email)) {
         setEm("PLease Enter Valid Email");
