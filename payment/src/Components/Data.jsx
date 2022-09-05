@@ -31,7 +31,7 @@ const Data = ({ func }) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  // function of post request for sending data in json file or in a api with the axios library
+  // function of post request for sending data in json file or in a api with the axios library and showing response
   const onSubmit = (e) => {
     e.preventDefault();
     axios.post("http://localhost:3003/users", user).then((res) => {
