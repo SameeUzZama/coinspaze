@@ -35,7 +35,6 @@ const Data = ({ func }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     axios.post("http://localhost:3003/users", user).then((res) => {
-      console.log(res);
       if (res.status === 200 || res.status === 201) {
         swal({
           title: "Success",
@@ -61,7 +60,6 @@ const Data = ({ func }) => {
           icon: "warning",
         });
       } else {
-        console.log("gggg");
         swal({
           title: "Something went wrong",
           icon: "warning",
